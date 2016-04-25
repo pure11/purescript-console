@@ -24,14 +24,14 @@ namespace Control_Monad_Eff_Console {
 
   inline auto log(const any& s) -> any {
     return [=]() -> any {
-      std::cout << s.cast<string>() << std::endl;
+      std::cout << cast<cstring>(s) << std::endl;
       return Prelude::unit;
     };
   }
 
   inline auto error(const any& s) -> any {
     return [=]() -> any {
-      std::cerr << s.cast<string>() << std::endl;
+      std::cerr << cast<cstring>(s) << std::endl;
       return Prelude::unit;
     };
   }
