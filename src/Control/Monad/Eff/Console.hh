@@ -22,17 +22,51 @@ namespace Control_Monad_Eff_Console {
 
   using namespace PureScript;
 
+  // foreign import log
+  //   :: forall eff
+  //    . String
+  //   -> Eff (console :: CONSOLE | eff) Unit
+  //
   inline auto log(const any& s) -> any {
     return [=]() -> any {
       std::cout << cast<cstring>(s) << std::endl;
-      return Prelude::unit;
+      return Data_Unit::unit;
     };
   }
 
+  // foreign import warn
+  //   :: forall eff
+  //    . String
+  //   -> Eff (console :: CONSOLE | eff) Unit
+  //
+  inline auto warn(const any& s) -> any {
+    return [=]() -> any {
+      std::cerr << cast<cstring>(s) << std::endl;
+      return Data_Unit::unit;
+    };
+  }
+
+  // foreign import error
+  //   :: forall eff
+  //    . String
+  //   -> Eff (console :: CONSOLE | eff) Unit
+  //
   inline auto error(const any& s) -> any {
     return [=]() -> any {
       std::cerr << cast<cstring>(s) << std::endl;
-      return Prelude::unit;
+      return Data_Unit::unit;
+    };
+  }
+
+  // foreign import info
+  //   :: forall eff
+  //    . String
+  //   -> Eff (console :: CONSOLE | eff) Unit
+  //
+  inline auto info(const any& s) -> any {
+    return [=]() -> any {
+      std::cerr << cast<cstring>(s) << std::endl;
+      return Data_Unit::unit;
     };
   }
 
