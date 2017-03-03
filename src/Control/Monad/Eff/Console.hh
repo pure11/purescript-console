@@ -29,7 +29,7 @@ namespace Control_Monad_Eff_Console {
   //
   inline auto log(const any& s) -> any {
     return [=]() -> any {
-      std::cout << cast<cstring>(s) << std::endl;
+      std::cout << static_cast<const string&>(s) << std::endl;
       return Data_Unit::unit;
     };
   }
@@ -41,7 +41,7 @@ namespace Control_Monad_Eff_Console {
   //
   inline auto warn(const any& s) -> any {
     return [=]() -> any {
-      std::cerr << cast<cstring>(s) << std::endl;
+      std::cerr << static_cast<const string&>(s) << std::endl;
       return Data_Unit::unit;
     };
   }
@@ -53,7 +53,7 @@ namespace Control_Monad_Eff_Console {
   //
   inline auto error(const any& s) -> any {
     return [=]() -> any {
-      std::cerr << cast<cstring>(s) << std::endl;
+      std::cerr << static_cast<const string&>(s) << std::endl;
       return Data_Unit::unit;
     };
   }
@@ -65,7 +65,7 @@ namespace Control_Monad_Eff_Console {
   //
   inline auto info(const any& s) -> any {
     return [=]() -> any {
-      std::cerr << cast<cstring>(s) << std::endl;
+      std::cerr << static_cast<const string&>(s) << std::endl;
       return Data_Unit::unit;
     };
   }
